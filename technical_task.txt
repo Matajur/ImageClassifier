@@ -1,0 +1,21 @@
+## Task:
+
+Students are asked to implement a web service that classifies images using convolutional neural networks.
+
+Download and explore the dataset https://www.kaggle.com/c/cifar-10. In it you will find 60,000 32x32 color images divided into 10 classes with 6,000 examples per class. Create and train a convolutional neural network capable of classifying an image given to it into one of the 10 classes proposed in the dataset. You have to choose the architecture of the neural network yourself, namely: the number of convolutional layers, the number of neurons in the fully connected layer, activation functions, hyperparameters, etc. Try to get as much classification accuracy as possible. To do this, use the expansion of the training set, reuse and retraining of neural networks (for example, VGG16 or any other) discussed in the classes.
+
+Write a web interface in a convenient Python framework, with the help of which the user will be able to download an image, and in the response receive the name of one of the 10 classes offered in the dataset.
+Optionally, a working project can be uploaded to heroku, aws, gcp, azure, or any other cloud platform.
+
+## Admission criteria:
+
+1. The project must be stored in a separate repository and be publicly available (GitHub, GitLab or BitBucket).
+2. The trained neural network must be saved in the project repository.
+3. The project should contain a brief description of the neural network architecture, which tuning methods were used during training, as well as loss and accuracy graphs built on training, test, and validation data.
+4. The project must contain detailed instructions for installation and use.
+5. It is necessary to implement a web interface.
+6. The application must be containerized in Docker and the image uploaded to dockerhub.
+7. Creating a Dockerfile: Develop a Dockerfile to create a Docker image that will allow us to host and run our application in a containerized environment. A Dockerfile should include all the necessary instructions for building an image, including choosing a base image, copying the application's source code to the container, installing the necessary dependencies, and specifying the command to run the application.
+8. Using Docker Compose: Integrate the Docker Compose tool to simplify the process of deploying and managing our project in a Docker environment. Create a docker-compose.yml file that describes the services, networks, and volumes required for the project. The file should allow you to run the entire project with a single docker-compose up command, automating the creation and running of the necessary Docker containers.
+
+P.S.: You can expand the functionality of the project at your discretion, without fail consulting with the mentor before doing so. Consider this project as part of your portfolio and a useful tool for you. For this reason, the initiative in expanding and supplementing the requirements for the project is welcomed.
