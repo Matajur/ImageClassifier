@@ -1,0 +1,156 @@
+/* фон */
+body {
+    background-image: url('/static/fon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This ensures the background image stays in place during scroll */
+    background-position: center center; /* This centers the image on the page */
+}
+/* фон */
+
+
+
+/* base.html */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background: linear-gradient(rgba(64, 127, 2, 0.8), rgba(0, 51, 0, 0.8));
+    background-size: cover;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Покращена тінь */
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    transition: opacity 0.3s; /* Плавне змінення прозорості */
+}
+
+.header a:hover {
+    text-decoration: underline;
+    opacity: 0.2; /* Зменшуємо прозорість при наведенні */
+}
+
+.container {
+    padding: 10px;
+}
+/* base.html */
+
+
+
+/* image_upload.html */
+.upload-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.upload-heading {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.upload-instructions {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.upload-form {
+    margin-bottom: 20px;
+}
+
+.upload-button {
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.upload-button:hover,
+.upload-button:focus {
+    background-color: #218838;
+    outline: none;
+}
+
+.upload-form input[type="file"] {
+    border: 2px dashed rgba(0, 0, 0, 0.3); /* Прозорі рамки */
+    background-color: rgba(255, 255, 255, 0.1); /* Прозорий фон */
+    color: #666; /* Колір тексту */
+    display: block;
+    margin: 10px auto 20px;
+    padding: 15px; /* Більше відступу від рамок */
+    border-radius: 8px; /* Закруглені кути */
+}
+
+@media (max-width: 768px) {
+    .upload-container {
+        width: 75%;
+        margin: 10px auto;
+    }
+
+    .image-preview__image {
+        max-width: 80%; /* Зменшуємо ширину фото вдвічі */
+    }
+}
+
+.image-preview {
+    margin: 20px 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed rgba(0, 0, 0, 0.3); /* Прозорі рамки */
+    background-color: rgba(255, 255, 255, 0.1); /* Прозорий фон */
+    border-radius: 8px; /* Закруглені кути */
+    overflow: hidden;
+}
+
+.image-preview__image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-preview__default-text {
+    display: none;
+}
+
+.upload-form input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ddd;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
+.custom-file-upload:hover {
+    background-color: #e9ecef;
+}
+/* image_upload.html */

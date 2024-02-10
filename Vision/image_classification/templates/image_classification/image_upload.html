@@ -1,0 +1,82 @@
+{% extends "image_classification/base.html" %}
+
+{% block content %}
+<div class="upload-container">
+  <h2 class="upload-heading">Завантажте ваше зображення</h2>
+
+  <div class="image-preview" id="imagePreview">
+    <img src="" alt="Image Preview" class="image-preview__image" id="imgPreview" style="display: none;">
+    <span class="image-preview__default-text">Попередній перегляд зображення тут</span>
+  </div>
+
+  <form method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.is_hidden %}
+        {{ field }}
+      {% else %}
+        <!-- завантаження файлів -->
+        <label for="{{ field.id_for_label }}" class="custom-file-upload">
+          Обрати фото
+        </label>
+        <!-- File input field -->
+        {{ field }} 
+      {% endif %}
+    {% endfor %}
+    <!-- Кнопка "Визначити", прихована за замовчуванням і відображається після вибору зображення -->
+    <button type="button" class="upload-button" id="submit-button" style="display: none;">Визначити</button>
+  </form>
+
+  <!-- Відображати категорію, якщо вона була передана в шаблон -->
+  <div id="classification-result" style="display: none;">
+    <div class="classification-result">
+      <p id="category-text"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('id_image').onchange = function(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+          var imgPreview = document.getElementById('imgPreview');
+          imgPreview.style.display = 'block';
+          imgPreview.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+      
+      // Показувати кнопку "Визначити", коли вибрано зображення
+      var submitButton = document.getElementById('submit-button');
+      submitButton.style.display = 'block';
+      
+      // Змініть текст підпису на "Виберіть інше фото", коли вибрано зображення
+      var fileLabel = document.querySelector('.custom-file-upload');
+      fileLabel.textContent = 'Обрати інше фото';
+      
+      // Приховати попередній результат
+      var categoryResult = document.getElementById('category-text');
+      categoryResult.textContent = '';
+      document.getElementById('classification-result').style.display = 'none';
+  };
+  
+  document.getElementById('submit-button').onclick = function() {
+      var form = document.getElementById('uploadForm');
+      var formData = new FormData(form);
+      fetch('{% url "image_upload" %}', {  // Замініть 'image_upload' на правильну назву вашого шляху для обробки форми
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          var categoryResult = document.getElementById('category-text');
+          categoryResult.textContent = "Ваше фото належить до категорії " + data.category + ".";
+          document.getElementById('classification-result').style.display = 'block';
+          document.getElementById('submit-button').style.display = 'none';
+          // Показати текст "Обрати інше фото"
+          var fileLabel = document.querySelector('.custom-file-upload');
+          fileLabel.textContent = 'Обрати інше фото';
+      })
+      .catch(error => console.error('Error:', error));
+  };
+  </script>
+      {% endblock %}
