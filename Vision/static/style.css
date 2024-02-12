@@ -80,8 +80,8 @@ body {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px 0;
-    border-radius: 5px;
+    padding: 10px 20px; /* Змінено padding */
+    border-radius: 4px; /* Змінено border-radius */
     cursor: pointer;
     font-size: 16px;
 }
@@ -93,64 +93,89 @@ body {
 }
 
 .upload-form input[type="file"] {
-    border: 2px dashed rgba(0, 0, 0, 0.3); /* Прозорі рамки */
-    background-color: rgba(255, 255, 255, 0.1); /* Прозорий фон */
-    color: #666; /* Колір тексту */
-    display: block;
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #666;
+    display: none; /* Змінено display */
     margin: 10px auto 20px;
-    padding: 15px; /* Більше відступу від рамок */
-    border-radius: 8px; /* Закруглені кути */
-}
-
-@media (max-width: 768px) {
-    .upload-container {
-        width: 75%;
-        margin: 10px auto;
-    }
-
-    .image-preview__image {
-        max-width: 80%; /* Зменшуємо ширину фото вдвічі */
-    }
-}
-
-.image-preview {
-    margin: 20px 0;
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed rgba(0, 0, 0, 0.3); /* Прозорі рамки */
-    background-color: rgba(255, 255, 255, 0.1); /* Прозорий фон */
-    border-radius: 8px; /* Закруглені кути */
-    overflow: hidden;
-}
-
-.image-preview__image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.image-preview__default-text {
-    display: none;
-}
-
-.upload-form input[type="file"] {
-    display: none;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .custom-file-upload {
     border: 1px solid #ddd;
     display: inline-block;
-    padding: 6px 12px;
+    padding: 12px 24px; /* Змінено padding */
     cursor: pointer;
-    background-color: #f8f9fa;
+    background-color: #007bff;
+    color: white;
     border-radius: 4px;
     margin: 10px auto;
+    font-size: 16px;
 }
 
 .custom-file-upload:hover {
-    background-color: #e9ecef;
+    background-color: #e9ecef; /* Змінено background-color */
 }
+
+.image-preview {
+    border: 1px dashed #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 95.5%;
+}
+
+.image-preview__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+#classification-result {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#category-text {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #495057;
+}
+
+#verification-buttons {
+    margin-top: 10px;
+}
+
+#true-button, #false-button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#true-button {
+    background-color: #28a745;
+}
+
+#false-button {
+    background-color: #dc3545;
+}
+
+#true-button:hover {
+    background-color: #218838;
+}
+
+#false-button:hover {
+    background-color: #c82333;
+}
+
 /* image_upload.html */
