@@ -2,20 +2,22 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .forms import ImageUploadForm
 from .models import Image
-import random
+from .model.classifier import predict_img
 
 def image_upload(request):
     form = ImageUploadForm()
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            # Визначаємо категорію і зберігаємо зображення
-            categories = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
-            random_category = random.choice(categories)
-            uploaded_image = form.save(commit=False)
-            uploaded_image.category = random_category
+            uploaded_image = form.save()
+            file_path = uploaded_image.image.path
+            
+            # Визначення категорії за допомогою моделі
+            category = predict_img(file_path)
+            
+            uploaded_image.category = category
             uploaded_image.save()
-            return JsonResponse({'category': random_category, 'image_id': uploaded_image.id})
+            return JsonResponse({'category': category, 'image_id': uploaded_image.id})
     return render(request, 'image_classification/image_upload.html', {'form': form})
 
 def save_feedback(request):
