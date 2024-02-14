@@ -3,8 +3,8 @@ body {
     background-image: url('/static/fon.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* This ensures the background image stays in place during scroll */
-    background-position: center center; /* This centers the image on the page */
+    background-attachment: fixed;
+    background-position: center center;
 }
 /* фон */
 
@@ -24,7 +24,7 @@ body {
     color: white;
     padding: 10px 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Покращена тінь */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .header a {
@@ -32,12 +32,12 @@ body {
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    transition: opacity 0.3s; /* Плавне змінення прозорості */
+    transition: opacity 0.3s;
 }
 
 .header a:hover {
     text-decoration: underline;
-    opacity: 0.2; /* Зменшуємо прозорість при наведенні */
+    opacity: 0.2;
 }
 
 .container {
@@ -80,8 +80,8 @@ body {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px; /* Змінено padding */
-    border-radius: 4px; /* Змінено border-radius */
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -96,7 +96,7 @@ body {
     border: 2px dashed rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
     color: #666;
-    display: none; /* Змінено display */
+    display: none;
     margin: 10px auto 20px;
     padding: 15px;
     border-radius: 8px;
@@ -105,7 +105,7 @@ body {
 .custom-file-upload {
     border: 1px solid #ddd;
     display: inline-block;
-    padding: 12px 24px; /* Змінено padding */
+    padding: 12px 24px;
     cursor: pointer;
     background-color: #007bff;
     color: white;
@@ -115,7 +115,7 @@ body {
 }
 
 .custom-file-upload:hover {
-    background-color: #e9ecef; /* Змінено background-color */
+    background-color: #e9ecef;
 }
 
 .image-preview {

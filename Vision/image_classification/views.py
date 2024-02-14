@@ -4,7 +4,6 @@ from .forms import ImageUploadForm
 from .models import Image
 from .model.classifier import ImageClassifier
 
-# Створення екземпляру класифікатора з правильним шляхом до моделі
 classifier = ImageClassifier('image_classification/model/cnn_model.keras')
 
 def image_upload(request):

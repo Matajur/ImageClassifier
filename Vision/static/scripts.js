@@ -1,5 +1,3 @@
-// Файл static/js/scripts.js
-
 document.addEventListener('DOMContentLoaded', function() {
     var submitButton = document.getElementById('submit-button');
     var trueButton = document.getElementById('true-button');
@@ -17,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.style.display = 'block';
 
         var fileLabel = document.querySelector('.custom-file-upload');
-        fileLabel.textContent = 'Обрати інше фото';
+        fileLabel.textContent = 'Choose another photo';
 
         removeFeedbackMessage();
         document.getElementById('classification-result').style.display = 'none';
@@ -36,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             var categoryResult = document.getElementById('category-text');
-            categoryResult.textContent = "Ваше фото належить до категорії " + data.category + ".";
+            categoryResult.textContent = "Your photo is in the category " + data.category + ".";
             document.getElementById('image-id').value = data.image_id;
             document.getElementById('image-category').value = data.category;
             document.getElementById('classification-result').style.display = 'block';
             document.getElementById('verification-buttons').style.display = 'block';
             submitButton.style.display = 'none';
             var fileLabel = document.querySelector('.custom-file-upload');
-            fileLabel.textContent = 'Обрати інше фото';
+            fileLabel.textContent = 'Choose another photo';
         })
         .catch(error => console.error('Error:', error));
     };
@@ -86,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var feedbackMessage = document.createElement('div');
         feedbackMessage.id = 'feedback-message';
-        feedbackMessage.textContent = 'Дякуємо за відгук!';
+        feedbackMessage.textContent = 'Thank you for your feedback!';
         feedbackMessage.style.textAlign = 'center';
         feedbackMessage.style.marginTop = '10px';
         

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="upload-container">
-  <h2 class="upload-heading">Завантажте ваше зображення</h2>
+  <h2 class="upload-heading">Upload your image</h2>
 
   <div class="image-preview" id="imagePreview">
     <img src="" alt="Image Preview" class="image-preview__image" id="imgPreview" style="display: none;">
@@ -15,12 +15,12 @@
         {{ field }}
       {% else %}
         <label for="{{ field.id_for_label }}" class="custom-file-upload">
-          Обрати фото
+          Choose photo
         </label>
         {{ field }}
       {% endif %}
     {% endfor %}
-    <button type="button" class="upload-button" id="submit-button" style="display: none;">Визначити</button>
+    <button type="button" class="upload-button" id="submit-button" style="display: none;">Identify</button>
   </form>
 
   <div id="classification-result" style="display: none;">
