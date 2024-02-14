@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .forms import ImageUploadForm
 from .models import Image
-from .model.classifier import predict_img
+from .model.classifier import ImageClassifier
+
+# Створення екземпляру класифікатора з правильним шляхом до моделі
+classifier = ImageClassifier('image_classification/model/cnn_model.keras')
 
 def image_upload(request):
     form = ImageUploadForm()
@@ -13,7 +16,7 @@ def image_upload(request):
             file_path = uploaded_image.image.path
             
             # Визначення категорії за допомогою моделі
-            category = predict_img(file_path)
+            category = classifier.predict_img(file_path)  # Виклик методу екземпляру класифікатора
             
             uploaded_image.category = category
             uploaded_image.save()
@@ -26,7 +29,6 @@ def save_feedback(request):
         is_correct = request.POST.get('feedback') == 'true'
         
         try:
-            # Тут ми оновлюємо лише поле is_correct
             image = Image.objects.get(id=image_id)
             image.is_correct = is_correct
             image.save(update_fields=['is_correct'])
