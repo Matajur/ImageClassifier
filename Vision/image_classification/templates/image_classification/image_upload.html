@@ -1,0 +1,42 @@
+{% extends "image_classification/base.html" %}
+
+{% block content %}
+<div class="upload-container">
+  <h2 class="upload-heading">Завантажте ваше зображення</h2>
+
+  <div class="image-preview" id="imagePreview">
+    <img src="" alt="Image Preview" class="image-preview__image" id="imgPreview" style="display: none;">
+  </div>
+
+  <form method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.is_hidden %}
+        {{ field }}
+      {% else %}
+        <label for="{{ field.id_for_label }}" class="custom-file-upload">
+          Обрати фото
+        </label>
+        {{ field }}
+      {% endif %}
+    {% endfor %}
+    <button type="button" class="upload-button" id="submit-button" style="display: none;">Визначити</button>
+  </form>
+
+  <div id="classification-result" style="display: none;">
+    <div class="classification-result">
+      <p id="category-text"></p>
+      <input type="hidden" id="image-id" value="">
+      <input type="hidden" id="image-category" value="">
+    </div>
+    <div id="verification-buttons" style="display: none;">
+      <button type="button" id="true-button">True</button>
+      <button type="button" id="false-button">False</button>
+    </div>
+  </div>
+</div>
+
+<div id="image-upload-url" data-url="{% url 'image_upload' %}" style="display:none;"></div>
+<div id="save-feedback-url" data-url="{% url 'save_feedback' %}" style="display:none;"></div>
+
+{% endblock %}
