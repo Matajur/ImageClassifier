@@ -1,7 +1,7 @@
 import numpy as np
-import requests
+import os
 from keras.models import load_model
-from PIL import Image
+from keras.preprocessing.image import img_to_array, load_img
 
 
 class_names = [
@@ -17,20 +17,21 @@ class_names = [
     "Truck",
 ]
 
+def predict_img(file_path):
+    
+    model_path = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
+    model = load_model(model_path)
+    
+    img = load_img(file_path, target_size=(32, 32))
+    img_array = img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0) / 255.0
+    predictions = model.predict(img_array)
+    predicted_class = class_names[np.argmax(predictions)]
 
-def predict_img(url):
-    response = requests.get(url, stream=True)
-    img = Image.open(response.raw)
-    img = img.resize((32, 32))
-    img = np.array(img)
-    img = np.expand_dims(img, axis=0)
-    model = load_model("cnn_86.keras")
-    prediction = model.predict(img)
-    index = np.argmax(prediction[0])
-    return class_names[index]
+    return predicted_class
 
 
 if __name__ == "__main__":
-    url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsa3ISspmdRq4nDC9M6pfoNh1TvukFHBzGuA&usqp=CAU"
-    result = predict_img(url)
+    file_path = os.path.join(os.path.dirname(__file__), "plane.jpg")
+    result = predict_img(file_path)
     print(result)
