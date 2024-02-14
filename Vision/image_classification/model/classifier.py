@@ -1,7 +1,8 @@
 import numpy as np
-from keras.models import load_model
-from PIL import Image
 import os
+from keras.models import load_model
+from keras.preprocessing.image import img_to_array, load_img
+
 
 class_names = [
     "Airplane",
@@ -17,20 +18,20 @@ class_names = [
 ]
 
 def predict_img(file_path):
-    # Встановлюємо шлях до моделі відносно поточного файлу
-    model_path = os.path.join(os.path.dirname(__file__), "cnn_86.keras")
-    # Завантажуємо модель
+    
+    model_path = os.path.join(os.path.dirname(__file__), "cnn_model.keras")
     model = load_model(model_path)
     
-    # Відкриваємо зображення, перетворюємо його і готуємо для прогнозування
-    img = Image.open(file_path)
-    img = img.resize((32, 32))
-    img = np.array(img)
-    img = np.expand_dims(img, axis=0)
-    
-    # Робимо прогноз
-    prediction = model.predict(img)
-    index = np.argmax(prediction[0])
-    
-    # Повертаємо назву класу з найвищою ймовірністю
-    return class_names[index]
+    img = load_img(file_path, target_size=(32, 32))
+    img_array = img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0) / 255.0
+    predictions = model.predict(img_array)
+    predicted_class = class_names[np.argmax(predictions)]
+
+    return predicted_class
+
+
+if __name__ == "__main__":
+    file_path = os.path.join(os.path.dirname(__file__), "plane.jpg")
+    result = predict_img(file_path)
+    print(result)
