@@ -11,37 +11,24 @@ body {
 
 
 /* base.html */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .header {
-    background: linear-gradient(rgba(64, 127, 2, 0.8), rgba(0, 51, 0, 0.8));
-    background-size: cover;
+    background: linear-gradient(to right, #8b4513, #32cd32);
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .header a {
     color: white;
     text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    transition: opacity 0.3s;
+    font-family: 'Pacifico', cursive; /* Застосовано шрифт Pacifico */
+    font-size: 30px; /* Дещо збільшено розмір шрифту */
+    transition: color 0.3s;
 }
 
 .header a:hover {
-    text-decoration: underline;
-    opacity: 0.2;
-}
-
-.container {
-    padding: 10px;
+    color: #ffd700;
 }
 /* base.html */
 
