@@ -8,30 +8,30 @@ class ImageAdmin(admin.ModelAdmin):
     actions = ['delete_true', 'delete_false', 'delete_none']
 
     def delete_model(self, request, obj):
-        # Якщо у моделі є файлове поле і воно не пусте, видаляємо файл
+        # If the model has a file field and it is not empty, delete the file
         if obj.image and os.path.isfile(obj.image.path):
             os.remove(obj.image.path)
         obj.delete()
 
     def delete_queryset(self, request, queryset):
-        # Подібно delete_model, але для видалення кількох об'єктів
+        # Similar to delete_model, but for deleting multiple objects
         for obj in queryset:
             self.delete_model(request, obj)
 
     def delete_true(self, request, queryset):
-        # Видаляємо всі зображення з is_correct=True
+        # We delete all images with is_correct=True
         for obj in queryset.filter(is_correct=True):
             self.delete_model(request, obj)
-    delete_true.short_description = "Видалити зображення з вірним відгуком (True)"
+    delete_true.short_description = "Delete images with true feedback (True)"
 
     def delete_false(self, request, queryset):
-        # Видаляємо всі зображення з is_correct=False
+        # We delete all images with is_correct=False
         for obj in queryset.filter(is_correct=False):
             self.delete_model(request, obj)
-    delete_false.short_description = "Видалити зображення з невірним відгуком (False)"
+    delete_false.short_description = "Delete images with true feedback (False)"
 
     def delete_none(self, request, queryset):
-        # Видаляємо всі зображення з is_correct=None
+        # We delete all images with is_correct=None
         for obj in queryset.filter(is_correct__isnull=True):
             self.delete_model(request, obj)
-    delete_none.short_description = "Видалити зображення без відгуку (None)"
+    delete_none.short_description = "Delete image without feedback (None)"
