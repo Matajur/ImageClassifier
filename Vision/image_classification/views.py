@@ -4,7 +4,7 @@ from .forms import ImageUploadForm
 from .models import Image
 from .model.classifier import ImageClassifier
 
-classifier = ImageClassifier('image_classification/model/cnn_model.keras')
+classifier = ImageClassifier('Vision/image_classification/model/cnn_model.h5')
 
 def image_upload(request):
     form = ImageUploadForm()
@@ -14,8 +14,8 @@ def image_upload(request):
             uploaded_image = form.save()
             file_path = uploaded_image.image.path
             
-            # Визначення категорії за допомогою моделі
-            category = classifier.predict_img(file_path)  # Виклик методу екземпляру класифікатора
+            # Defining a category using a model
+            category = classifier.predict_img(file_path)  # Classifier instance method call
             
             uploaded_image.category = category
             uploaded_image.save()

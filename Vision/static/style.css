@@ -1,4 +1,4 @@
-/* фон */
+/* background */
 body {
     background-image: url('/static/fon.png');
     background-size: cover;
@@ -6,7 +6,7 @@ body {
     background-attachment: fixed;
     background-position: center center;
 }
-/* фон */
+/* background */
 
 
 
@@ -22,8 +22,8 @@ body {
 .header a {
     color: white;
     text-decoration: none;
-    font-family: 'Pacifico', cursive; /* Застосовано шрифт Pacifico */
-    font-size: 30px; /* Дещо збільшено розмір шрифту */
+    font-family: 'Pacifico', cursive; /* Font applied Pacifico */
+    font-size: 30px; /* The font size slightly increased */
     transition: color 0.3s;
 }
 

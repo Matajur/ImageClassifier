@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "imageclassifier"
+version = "0.1.0"
+description = "A web service for image classification using convolutional neural network"
+authors = ["Project Group 2"]
+license = "Apache License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+numpy = "^1.24.3"
+Django = "^5.0.2"
+visualkeras = "^0.0.2"
+matplotlib = "^3.8.3"
+opencv-python = "^4.7.0"
+jupyter = "^1.0.0"
+fs = "^2.4.16"
+scikit-learn = "^1.4.0"
+tensorflow = {version = "^2.13.0" }
+tensorflow-macos = { version = "^2.13.0", platform = "darwin", markers = "platform_machine=='arm64'" }
+tensorflow-intel = { version = "^2.13.0", platform = "win32" }
+tensorflow-cpu = [
+    { version = "^2.13.0", platform = "linux", markers = "platform_machine!='arm64' and platform_machine!='aarch64'" },
+    { version = "^2.13.0", platform = "darwin", markers = "platform_machine!='arm64' and platform_machine!='aarch64'" },]
+tensorflow-cpu-aws = { version = "^2.13.0", platform = "linux", markers = "platform_machine=='arm64' or platform_machine=='aarch64'" }
+tensorflow-io-gcs-filesystem = [
+    { version = ">= 0.23.1", markers = "platform_machine!='arm64' or platform_system!='Darwin'" },
+    { version = "< 0.32.0", markers = "platform_system == 'Windows'" }
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
