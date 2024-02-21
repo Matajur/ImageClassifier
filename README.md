@@ -22,7 +22,7 @@ A web service that classifies images using convolutional neural networks.
 
 ## License
 
-Apache Liense 2.0
+Apache License 2.0
 
 ## Contributions
 
