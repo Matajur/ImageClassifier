@@ -12,12 +12,13 @@ A web service that classifies images using convolutional neural networks.
 * the application is deployed in the Azure cloud and is available from the [link](http://172.214.52.28:8095/upload/);
 * the source code is available on GitHub at the [link](https://github.com/Matajur/ImageClassifier);
 * to download an image with app from Docker Hub, run:
->>> docker pull matajur/imageclassifier:imageclassifier
+> docker pull matajur/imageclassifier:imageclassifier
 * to run the web application:
->>> docker run -p 8000:8000 imageclassifier
+> docker run -p 8000:8000 imageclassifier
 * using Docker-Compose:
->>> docker-compose up -d
->>> docker-compose down
+> docker-compose up -d
+
+> docker-compose down
 * for more information see the [presentation](Project_Presentation.pdf)
 
 ## License
